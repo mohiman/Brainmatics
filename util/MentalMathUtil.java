@@ -4,6 +4,8 @@ package brainmatics.manan.com.brainmatics.util;
  * Created by mohiman on 10/16/2018.
  */
 
+import android.util.Log;
+
 import net.objecthunter.exp4j.Expression;
 import net.objecthunter.exp4j.ExpressionBuilder;
 
@@ -179,7 +181,7 @@ public class MentalMathUtil {
         numbersInfo.setOopResult(result);
         numbersInfo.setAnswer((long)result);
 
-        System.out.println("This is numbersInfo in MentalMathUtil " + numbersInfo.toString());
+        Log.d("MentalMathUtil", "This is numbersInfo in MentalMathUtil " + numbersInfo.toString());
         return numbersInfo;
     }
 
