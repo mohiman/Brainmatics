@@ -67,8 +67,6 @@ public class ProblemAndChallangeType extends AppCompatActivity implements View.O
         Intent intent = new Intent(this, QuestionsActivity.class);
         switch (view.getId()){
             case R.id.button_ok:
-//                Toast.makeText(ProblemAndChallangeType.this, "Difficulty: " + getDifficulty() + ", Operation: "+ operation, Toast.LENGTH_SHORT).show();
-
                 intent.putExtra(MentalMathUtil.DIFFICULTY,getDifficulty());
                 intent.putExtra(MentalMathUtil.OPERATION,operation);
                 int type = 1;
@@ -76,6 +74,7 @@ public class ProblemAndChallangeType extends AppCompatActivity implements View.O
                     type = MentalMathUtil.PRACTICE_MODE;
                 }
                 intent.putExtra(MentalMathUtil.MODE, type);
+//                Toast.makeText(ProblemAndChallangeType.this, "Difficulty: " + getDifficulty() + ", Operation: "+ operation + ", type = " + type, Toast.LENGTH_SHORT).show();
                 startActivity(intent);
                 break;
             case R.id.button_cancel:

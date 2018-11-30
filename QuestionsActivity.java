@@ -157,25 +157,28 @@ public class QuestionsActivity extends AppCompatActivity implements View.OnClick
      */
     private void updateQuestionsAndOtherText(String editTextValue){
         AutoHideImage autoHideImage = null;
-        if (mode == 2 || currentQuestion < MentalMathUtil.MAX_CHALLANGE_QUESTIONS) {
-            int answer = 0;
-            try {
-                answer = Integer.parseInt(editTextValue);
-            } catch (NumberFormatException nfe) {
-                answer = 0;
-            }
 
-            if (answer != programsAnswer){
-                Toast.makeText(QuestionsActivity.this, "WRONG", Toast.LENGTH_SHORT).show();
-                imgQuestionStat.setImageResource(R.drawable.x_mark);
-                fail++;
+        int answer = 0;
+        try {
+            answer = Integer.parseInt(editTextValue);
+        } catch (NumberFormatException nfe) {
+            answer = 0;
+        }
 
-            }
-            else{
-                pass++;
-                Toast.makeText(QuestionsActivity.this, "Correct", Toast.LENGTH_SHORT).show();
-                imgQuestionStat.setImageResource(R.drawable.check_mark);
-            }
+        if (answer != programsAnswer){
+            Toast.makeText(QuestionsActivity.this, "WRONG", Toast.LENGTH_SHORT).show();
+            imgQuestionStat.setImageResource(R.drawable.x_mark);
+            fail++;
+
+        }
+        else{
+            pass++;
+            Toast.makeText(QuestionsActivity.this, "Correct", Toast.LENGTH_SHORT).show();
+            imgQuestionStat.setImageResource(R.drawable.check_mark);
+        }
+
+
+        if (mode == 2 || currentQuestion <= MentalMathUtil.MAX_CHALLANGE_QUESTIONS) {
             imgQuestionStat.setVisibility(View.VISIBLE);
             /**
              * This code crashes in API 26
@@ -186,7 +189,6 @@ public class QuestionsActivity extends AppCompatActivity implements View.OnClick
             mHandler.postDelayed(autoHideImage,1000);
             value.setText("");
             getNextSetOfNumbersBasedOnOperation();
-            currentQuestion++;
         }
         else
         {
@@ -317,15 +319,16 @@ public class QuestionsActivity extends AppCompatActivity implements View.OnClick
             txtViewnum1.setText(""+ numbersInfo.getNum1());
             txtViewnum2.setText(""+ + numbersInfo.getNum2());
 
-            if (mode == 1){
-                ((TextView)findViewById(R.id.textViewQuestion)).setText("Q "+ (currentQuestion+1) +" of " + MentalMathUtil.MAX_CHALLANGE_QUESTIONS);
-            }
-            else{
-                ((TextView)findViewById(R.id.textViewQuestion)).setText("Q "+ (currentQuestion+1) );
-            }
         }
-    }
 
+        if (mode == 1){
+            ((TextView)findViewById(R.id.textViewQuestion)).setText("Q "+ (currentQuestion++) +" of " + MentalMathUtil.MAX_CHALLANGE_QUESTIONS);
+        }
+        else{
+            ((TextView)findViewById(R.id.textViewQuestion)).setText("Q "+ (currentQuestion++) );
+        }
+
+    }
     @Override
     public void onClick(View view) {
         switch (view.getId()){
