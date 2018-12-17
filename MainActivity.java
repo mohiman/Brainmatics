@@ -79,6 +79,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 intent.putExtra(MentalMathUtil.OPERATION,MentalMathUtil.OOP);
                 startActivity(intent);
                 break;
+            case R.id.card_trig:
+                intent.putExtra(MentalMathUtil.OPERATION,MentalMathUtil.TRIGNOMETRY);
+                startActivity(intent);
+                break;
             case R.id.button_exit:
                 finishAffinity();
                 System.exit(0);

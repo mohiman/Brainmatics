@@ -59,6 +59,9 @@ public class ProblemAndChallangeType extends AppCompatActivity implements View.O
             case MentalMathUtil.OOP:
                 displayOperationTxtVw.setText("Order of Operations");
                 break;
+            case MentalMathUtil.TRIGNOMETRY:
+                displayOperationTxtVw.setText("Trigonometry");
+                break;
         }
     }
 

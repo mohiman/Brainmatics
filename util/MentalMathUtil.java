@@ -334,6 +334,8 @@ public class MentalMathUtil {
     public static final int MULTIPLICATION=3;
     public static final int DIVISION=4;
     public static final int OOP=5;
+    public static final int TRIGNOMETRY=6;
+
     public static final String OPERATION = "Operation" ;
     public static final String DIFFICULTY = "Difficulty";
     public static  final int DIFFICULTY_EASY = 1;

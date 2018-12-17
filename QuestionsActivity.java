@@ -47,7 +47,7 @@ public class QuestionsActivity extends AppCompatActivity implements View.OnClick
     int mode = 1;
     private int difficulty=0;
 
-    private Button btn0, btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9, btnClear, btnEnter, btnExit, btnHome;
+    private Button btn0, btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9, btnClear, btnEnter, btnExit, btnHome, btnSqRoot, btnFraction;
 
 
     @Override
@@ -59,10 +59,8 @@ public class QuestionsActivity extends AppCompatActivity implements View.OnClick
         Typeface font = Typeface.createFromAsset( getAssets(), MentalMathUtil.FA_FONT );
 
         imgQuestionStat = findViewById(R.id.imageViewQuesStatus);
-//        txtViewFinalStatus = (TextView)findViewById(R.id.textGrid);
         tv = (TextView)findViewById(R.id.textViewTimer);
         getNextSetOfNumbersBasedOnOperation();
-//        txtViewFinalStatus.setVisibility(View.INVISIBLE);
         ((LinearLayout)findViewById(R.id.linearLayoutMain)).setVisibility(View.VISIBLE);
         Intent i = getIntent();
 
@@ -89,6 +87,8 @@ public class QuestionsActivity extends AppCompatActivity implements View.OnClick
         btnEnter = (Button)findViewById(R.id.btn_Enter);
         btnHome = (Button)findViewById(R.id.btnQuestionsHome);
         btnExit = (Button)findViewById(R.id.btnQuestionsClose);
+        btnSqRoot=(Button)findViewById(R.id.btn_sqroot);
+        btnFraction=(Button)findViewById(R.id.btn_fraction);
         btn0.setOnClickListener(this);
         btn1.setOnClickListener(this);
         btn2.setOnClickListener(this);
@@ -103,9 +103,12 @@ public class QuestionsActivity extends AppCompatActivity implements View.OnClick
         btnEnter.setOnClickListener(this);
         btnHome.setOnClickListener(this);
         btnExit.setOnClickListener(this);
-
+        btnSqRoot.setOnClickListener(this);
+        btnFraction.setOnClickListener(this);
         btnHome.setTypeface(font);
         btnExit.setTypeface(font);
+        btnSqRoot.setTypeface(font);
+        btnFraction.setTypeface(font);
 
     }
 
@@ -136,6 +139,10 @@ public class QuestionsActivity extends AppCompatActivity implements View.OnClick
                 break;
             case MentalMathUtil.OOP:
                 displayOperationTxtVw.setText("Order of Operations");
+                imageViewOperation.setVisibility(View.INVISIBLE);  //setImageResource(R.drawable.newdivide);
+                break;
+            case MentalMathUtil.TRIGNOMETRY:
+                displayOperationTxtVw.setText("Trignometery");
                 imageViewOperation.setVisibility(View.INVISIBLE);  //setImageResource(R.drawable.newdivide);
                 break;
             default:
@@ -297,8 +304,12 @@ public class QuestionsActivity extends AppCompatActivity implements View.OnClick
         TextView txtViewnum2 = (TextView)findViewById(R.id.textViewNum2);
 
         programsAnswer= (int)numbersInfo.getAnswer();
-
-        if (numbersInfo.getOperation() == MentalMathUtil.OOP){
+        if(numbersInfo.getOperation()== MentalMathUtil.TRIGNOMETRY){
+            //Trignometry Code
+            txtViewnum1.setText("Calculate : " );
+            txtViewnum2.setText("Sin(30)");
+        }
+        else if (numbersInfo.getOperation() == MentalMathUtil.OOP){
 
             Log.i(getClass().getName(), "First Data " + numbersInfo.toString() + "(numbersInfo.getOopResult() % 1 == 0) == " + ((numbersInfo.getOopResult() % 1)) );
             while((numbersInfo.getOopResult() % 1 != 0) ||  (numbersInfo.getOopResult() < 0)  ){
